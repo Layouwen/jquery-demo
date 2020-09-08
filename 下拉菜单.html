@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/base.css">
+  <script src="js/jquery.js"></script>
+  <style>
+    .nav {
+      display: flex;
+    }
+
+    .nav > li > div {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+<ul class="nav">
+  <li>
+    <div>选项一</div>
+    <ul style="display: none;">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </li>
+  <li>
+    <div>选项二</div>
+    <ul style="display: none;">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </li>
+  <li>
+    <div>选项三</div>
+    <ul style="display: none;">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </li>
+</ul>
+<script>
+  $(() => {
+    $(".nav>li").mouseover(function () {
+      $(this).children("ul").show()
+    })
+    $(".nav>li").mouseout(function () {
+      $(this).children("ul").hide()
+    })
+  })
+</script>
+</body>
+</html>
