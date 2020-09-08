@@ -24,10 +24,18 @@
   $(() => {
     // 发送
     $("button").on("click", function () {
-      let val = $(".value").val()
-      if (val === "") return
-      $("ul").prepend(`<li>${val}</li>`).slideDown()
-      $(".value").val("")
+      let value = $(".value")
+      let li = $("<li></li>")
+      li.html(value.val() + "<a href='javascript:;'>删除</a>")
+      $("ul").prepend(li)
+      li.slideDown()
+      value.val("")
+    })
+    // 删除
+    $("ul").on("click", "li>a", function () {
+      $(this).parent().slideUp(function () {
+        $(this).remove()
+      })
     })
   })
 </script>
