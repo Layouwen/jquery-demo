@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/base.css">
+  <script src="js/jquery.js"></script>
+  <style>
+    .item {
+      display: flex;
+      padding: 20px;
+    }
+
+    .item button {
+      padding: 0 5px;
+    }
+
+    .item input {
+      width: 20px;
+    }
+  </style>
+</head>
+<body>
+<div class="item">
+  <div class="price">￥20</div>
+  <div>
+    <button class="reduce">-</button>
+    <label><input type="text" value="1"></label>
+    <button class="add">+</button>
+  </div>
+  <div class="all">$20</div>
+</div>
+<hr>
+<div class="item">
+  <div class="price">￥24</div>
+  <div>
+    <button class="reduce">-</button>
+    <label><input type="text" value="1"></label>
+    <button class="add">+</button>
+  </div>
+  <div class="all">￥24</div>
+</div>
+<hr>
+<div class="item">
+  <div class="price">￥83</div>
+  <div>
+    <button class="reduce">-</button>
+    <label><input type="text" value="1"></label>
+    <button class="add">+</button>
+  </div>
+  <div class="all">￥83</div>
+</div>
+<hr>
+<div>总价 <span class="countPrice"></span></div>
+<script>
+  $(() => {
+    countPrice()
+    // 加
+    $(".add").click(function () {
+      let nowVal = $(this).siblings("label").children().val()
+      $(this).siblings("label").children().val(parseInt(nowVal) + 1)
+      let price = $(this).parent().siblings(".price").text().substr(1)
+      let all = $(this).parent().siblings(".all").text("￥" + $(this).siblings("label").children().val() * price)
+      countPrice()
+    })
+    // 减
+    $(".reduce").click(function () {
+      let nowVal = $(this).siblings("label").children().val()
+      if (nowVal === "1") {
+        return
+      }
+      $(this).siblings("label").children().val(parseInt(nowVal) - 1)
+      let price = $(this).parent().siblings(".price").text().substr(1)
+      let all = $(this).parent().siblings(".all").text("￥" + $(this).siblings("label").children().val() * price)
+      countPrice()
+    })
+    // input数量变化时，改变单品总价
+    $(".item input").change(function () {
+      let price = $(this).parents(".item").find(".price").text().substr(1)
+      let count = $(this).val()
+      $(this).parents(".item").find(".all").text("￥" + price * count)
+      countPrice()
+    })
+
+    // 计算总价
+    function countPrice() {
+      let allList = $(".all")
+      let allCount = 0
+      for (let i = 0; i < allList.length; i++) {
+        allCount = allCount + parseInt($(allList[i]).text().substr(1))
+      }
+      $(".countPrice").text("￥" + allCount)
+    }
+  })
+</script>
+</body>
+</html>
