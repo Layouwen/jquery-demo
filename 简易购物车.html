@@ -87,11 +87,13 @@
 
     // 计算总价
     function countPrice() {
-      let allList = $(".all")
       let allCount = 0
-      for (let i = 0; i < allList.length; i++) {
-        allCount = allCount + parseInt($(allList[i]).text().substr(1))
-      }
+      // for (let i = 0; i < allList.length; i++) {
+      //   allCount = allCount + parseInt($(allList[i]).text().substr(1))
+      // }
+      $(".all").each(function (index, domEl) {
+        allCount += parseInt($(domEl).text().substr(1))
+      })
       $(".countPrice").text("￥" + allCount)
     }
   })
