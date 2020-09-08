@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/base.css">
+  <script src="js/jquery.js"></script>
+  <style>
+    body {
+      background: #000;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 700px;
+    }
+
+    .container > li {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+      background: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+<ul class="container">
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ul>
+<script>
+  $(() => {
+    $(".container").hover(function () {
+      $(".container > li").hover(function () {
+        $(this).stop().fadeTo(100, 1).siblings().stop().fadeTo(100, 0.5)
+      })
+    }, function () {
+      $(".container > li").stop().fadeTo(100, 1)
+    })
+  })
+</script>
+</body>
+</html>
