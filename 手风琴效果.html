@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/base.css">
+  <script src="js/jquery.js"></script>
+  <style>
+    .container {
+      display: flex;
+      width: 1000px;
+      border: 1px solid red;
+    }
+
+    .container > li.current {
+      width: 200px;
+    }
+
+    .container .current .small {
+      display: none;
+    }
+
+    .container .current .big {
+      display: block;
+    }
+
+    .container > li {
+      position: relative;
+      width: 69px;
+    }
+
+    .small {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 69px;
+      height: 69px;
+      border: 1px solid #fff;
+      background: green;
+    }
+
+    .big {
+      display: none;
+      width: 200px;
+      height: 69px;
+      border: 1px solid green;
+    }
+  </style>
+</head>
+<body>
+<ul class="container">
+  <li class="current">
+    <div class="small"></div>
+    <div class="big"></div>
+  </li>
+  <li>
+    <div class="small"></div>
+    <div class="big"></div>
+  </li>
+  <li>
+    <div class="small"></div>
+    <div class="big"></div>
+  </li>
+  <li>
+    <div class="small"></div>
+    <div class="big"></div>
+  </li>
+  <li>
+    <div class="small"></div>
+    <div class="big"></div>
+  </li>
+</ul>
+<script>
+  $(() => {
+    $(".container > li").mouseenter(function () {
+      $(this).stop().animate({
+        width: 200
+      }).find(".small").stop().fadeOut().siblings(".big").stop().fadeIn()
+      $(this).siblings("li").stop().animate({
+        width: 69
+      }).find(".small").stop().fadeIn().siblings(".big").stop().fadeOut()
+    })
+  })
+</script>
+</body>
+</html>
