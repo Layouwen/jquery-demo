@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/base.css">
+  <script src="js/jquery.js"></script>
+  <style>
+    .container {
+      display: flex;
+    }
+
+    .container ul > li {
+      width: 40px;
+      height: 20px;
+      border: 1px solid red;
+    }
+
+    .container .box {
+      flex: 1;
+      background: pink;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <ul>
+    <li style="background: red;">11</li>
+    <li>22</li>
+    <li>33</li>
+    <li>44</li>
+    <li>55</li>
+  </ul>
+  <div class="box">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+  </div>
+</div>
+<script>
+  $(() => {
+    $(".box > div").hide().eq(0).show()
+    $("ul>li").click(function () {
+      let index = $(this).index()
+      $(this).css("background", "red").siblings().css("background", "")
+      $(".box > div").eq(index).show().siblings().hide()
+    })
+  })
+</script>
+</body>
+</html>
