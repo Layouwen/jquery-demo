@@ -41,12 +41,10 @@
 </ul>
 <script>
   $(() => {
-    $(".container").hover(function () {
-      $(".container > li").hover(function () {
-        $(this).stop().fadeTo(100, 1).siblings().stop().fadeTo(100, 0.5)
-      })
+    $(".container > li").hover(function () {
+      $(this).siblings().stop().fadeTo(100, 0.5)
     }, function () {
-      $(".container > li").stop().fadeTo(100, 1)
+      $(this).siblings().stop().fadeTo(100, 1)
     })
   })
 </script>
